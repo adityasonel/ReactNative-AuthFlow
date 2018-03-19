@@ -31,8 +31,8 @@ export default class Main extends Component{
                     onPress = {() => params.handleLogoutHeader && params.handleLogoutHeader()}>
                     <Ionicons 
                         style = {{marginRight: 16}}
-                        name={'ios-log-out'} 
-                        size={24} 
+                        name={'ios-power'} 
+                        size={22} 
                         color='#0076FF' />
                 </TouchableOpacity>
             )
@@ -62,6 +62,7 @@ export default class Main extends Component{
         //             onPress: () => this._setIsLoggedIn(),
         //         }
         //     ]);
+
         ActionSheetIOS.showActionSheetWithOptions({
             options: ['Logout', 'Cancel'],
             destructiveButtonIndex: 0,
