@@ -19,7 +19,7 @@ const AppStack = StackNavigator({
   Main: {
     screen: Main,
     navigationOptions: {
-      title: 'Main'
+      title: 'Home'
     }
   }
 });

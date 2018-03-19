@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity, AlertIOS, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, AlertIOS, AsyncStorage, ActionSheetIOS, SegmentedControlIOS } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -49,19 +49,31 @@ export default class Main extends Component{
 
     onPressLogoutHeader = () => {
 
-        AlertIOS.alert(
-            'Confirm!', 
-            'Are you sure want to logout ?',
-            [
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel'),
-                    style: 'cancel'
-                }, {
-                    text: 'Logout',
-                    onPress: () => this._setIsLoggedIn(),
-                }
-            ]);
+        // AlertIOS.alert(
+        //     'Confirm!', 
+        //     'Are you sure want to logout ?',
+        //     [
+        //         {
+        //             text: 'Cancel',
+        //             onPress: () => console.log('Cancel'),
+        //             style: 'cancel'
+        //         }, {
+        //             text: 'Logout',
+        //             onPress: () => this._setIsLoggedIn(),
+        //         }
+        //     ]);
+        ActionSheetIOS.showActionSheetWithOptions({
+            options: ['Logout', 'Cancel'],
+            destructiveButtonIndex: 0,
+            cancelButtonIndex: 1,
+          },
+          (buttonIndex) => {
+            if (buttonIndex === 0) { 
+                this._setIsLoggedIn();
+             } else if (buttonIndex === 1) {
+                 console.log('cancelled!');
+             }
+          });
     }
   
     componentDidMount () {
@@ -71,7 +83,7 @@ export default class Main extends Component{
     render(){
         return(
             <View style = { styles.container } >
-                <Text>Main Screen!</Text>
+                <Text>Home Screen!</Text>
                 <Text>{this.state.email} logged in succesfully!</Text>
             </View>
         );
@@ -81,7 +93,5 @@ export default class Main extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
     }
 });

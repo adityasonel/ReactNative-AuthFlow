@@ -80,6 +80,7 @@ export default class LoginScreen extends Component{
                     <Text style = {styles.title} >Login</Text>
 
                         <TextInput
+                            returnKeyType = 'done'
                             autoCorrect = {false}
                             autoCapitalize = 'none'
                             blurOnSubmit = {true}
@@ -89,6 +90,7 @@ export default class LoginScreen extends Component{
                             placeholder = 'Username' />
 
                         <TextInput
+                            returnKeyType = 'done'
                             blurOnSubmit = {true}
                             onChangeText = {this._handlePassword}
                             style = {styles.inputs}
