@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, AlertIOS, AsyncStorage } from 'react-native';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 export default class LoginScreen extends Component{
 
     constructor(props){
@@ -54,15 +56,37 @@ export default class LoginScreen extends Component{
         return(
             <View style = {styles.container} >
 
+                <TouchableOpacity onPress = {this._onPressGoback} >
+                <View 
+                    style = {{
+                        flexDirection: 'row', 
+                        marginTop: 32, 
+                        alignItems: 'center', 
+                        marginLeft: 28}} >
+
+                        <Ionicons 
+                            name={'ios-arrow-back'} 
+                            size={28} 
+                            color='white' />
+                    <Text style = {{
+                        fontSize: 16, 
+                        color: 'white', 
+                        fontWeight: 'bold', 
+                        marginBottom: 3,
+                        marginLeft: 4}} >Back</Text>
+                </View>
+                </TouchableOpacity>
+
                     <Text style = {styles.title} >Login</Text>
 
                         <TextInput
+                            autoCorrect = {false}
                             autoCapitalize = 'none'
                             blurOnSubmit = {true}
                             onChangeText = {this._handleEmail}
                             style = {styles.inputs}
                             keyboardType = 'email-address'
-                            placeholder = 'Email' />
+                            placeholder = 'Username' />
 
                         <TextInput
                             blurOnSubmit = {true}
@@ -75,12 +99,6 @@ export default class LoginScreen extends Component{
                                 onPress = {() => this._onLoginPress(this.state.email, this.state.password)}
                                 style = {styles.loginContainer} >
                                 <Text style = {styles.buttonText} >LOGIN</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity 
-                            style = {styles.goBack}
-                            onPress = {this._onPressGoback} >
-                            <Text style = {{color: 'white'}} >Go Back</Text>
                         </TouchableOpacity>
 
             </View>
@@ -120,10 +138,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 32,
         marginLeft: 32,
-        marginTop: 160,
+        marginTop: 140,
         marginBottom: 22
-    }, goBack: {
-        alignSelf: 'center',
-        padding: 16
     }
 });
